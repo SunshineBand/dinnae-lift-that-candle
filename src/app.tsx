@@ -7,21 +7,9 @@ import tallyFour from './assets/tallyFour.svg'
 import tallyFive from './assets/tallyFive.svg'
 
 const repsDecorator = (reps: number) => {
-  if (reps == 0) {
-    return tallyZero
-  } else if (reps == 1) {
-    return tallyOne
-  } else if (reps == 2) {
-    return tallyTwo
-  } else if (reps == 3) {
-    return tallyThree
-  } else if (reps == 4) {
-    return tallyFour
-  } else if (reps == 5) {
-    return tallyFive
-  } else {
-    return tallyFive
-  }
+  const icons = [tallyZero, tallyOne, tallyTwo, tallyThree, tallyFour, tallyFive]
+
+  return icons[reps] || icons[5]
 }
 
 interface SectionProps {
@@ -31,15 +19,25 @@ interface SectionProps {
 const Section = ({ name }: SectionProps) => {
   const [reps, setReps] = useState(0)
 
+  const updateReps = () => {
+    if (reps >= 15) {
+      console.log({ reps })
+      return
+    }
+
+    setReps((reps) => reps + 1)
+  }
+
   return (
     <section className="flex flex-col items-center">
-      <button onClick={() => setReps((reps) => reps + 1)}>
+      <button onClick={updateReps}>
         <div className="text-xl">{name}</div>
         <div className="text-xl">80kg 5x5</div>
 
         <div className="h-20 w-full pt-2 flex justify-center">
           <img src={repsDecorator(reps)} class="logo" alt="Vite logo" />
           {reps > 5 && <img src={repsDecorator(reps - 5)} class="logo" alt="Vite logo" />}
+          {reps > 10 && <img src={repsDecorator(reps - 10)} class="logo" alt="Vite logo" />}
         </div>
       </button>
     </section>
