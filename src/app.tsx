@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks'
+import { LuMinus } from 'react-icons/lu'
 import tallyZero from './assets/tallyZero.svg'
 import tallyOne from './assets/tallyOne.svg'
 import tallyTwo from './assets/tallyTwo.svg'
@@ -19,27 +20,40 @@ interface SectionProps {
 const Section = ({ name }: SectionProps) => {
   const [reps, setReps] = useState(0)
 
-  const updateReps = () => {
-    if (reps >= 15) {
-      console.log({ reps })
-      return
-    }
+  const incrementReps = () => {
+    if (reps >= 15) return
 
     setReps((reps) => reps + 1)
   }
 
+  const decrementReps = () => {
+    if (reps <= 0) return
+
+    setReps(reps => reps - 1)
+  }
+
   return (
     <section className="flex flex-col items-center">
-      <button onClick={updateReps}>
-        <div className="text-xl">{name}</div>
-        <div className="text-xl">80kg 5x5</div>
-
-        <div className="h-20 w-full pt-2 flex justify-center">
-          <img src={repsDecorator(reps)} class="logo" alt="Vite logo" />
-          {reps > 5 && <img src={repsDecorator(reps - 5)} class="logo" alt="Vite logo" />}
-          {reps > 10 && <img src={repsDecorator(reps - 10)} class="logo" alt="Vite logo" />}
+      <div className="w-full">
+        <div className="flex justify-around">
+          <button type="button" onClick={decrementReps} className="w-full flex justify-center items-center">
+            <LuMinus className="mr-0"/>
+          </button>
+          <div className="w-full text-center">
+            <div className="text-xl">{name}</div>
+            <div className="text-xl">80kg 5x5</div>
+          </div>
+          <div className="w-full"></div>
         </div>
-      </button>
+
+        <button className="w-full" onClick={incrementReps}>
+          <div className="h-20 w-full pt-2 flex justify-center">
+            <img src={repsDecorator(reps)} class="logo" alt="Vite logo" />
+            {reps > 5 && <img src={repsDecorator(reps - 5)} class="logo" alt="Vite logo" />}
+            {reps > 10 && <img src={repsDecorator(reps - 10)} class="logo" alt="Vite logo" />}
+          </div>
+        </button>
+      </div>
     </section>
   )
 }
