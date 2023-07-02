@@ -63,7 +63,7 @@ export function App() {
   return (
     <>
       <header className="p-4 flex justify-center bg-orange-400 font-bold text-white">
-        <h1 className="text-2xl">Clach cuid fir</h1>
+        <h1 className="text-2xl">Bench day</h1>
       </header>
       <div className="bg-orange-50">
         <Section name={"Bench"}/>
