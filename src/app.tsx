@@ -7,7 +7,7 @@ import tallyThree from './assets/tallyThree.svg'
 import tallyFour from './assets/tallyFour.svg'
 import tallyFive from './assets/tallyFive.svg'
 
-const repsDecorator = (reps: number) => {
+const setsDecorator = (reps: number) => {
   const icons = [tallyZero, tallyOne, tallyTwo, tallyThree, tallyFour, tallyFive]
 
   return icons[reps] || icons[5]
@@ -18,19 +18,23 @@ interface SectionProps {
 }
 
 const Section = ({ name }: SectionProps) => {
-  const [reps, setReps] = useState(0)
+  const [sets, setSets] = useState(0)
 
   const incrementReps = () => {
-    if (reps >= 15) return
+    if (sets >= 15) return
 
-    setReps((reps) => reps + 1)
+    setSets((sets) => sets + 1)
   }
 
   const decrementReps = () => {
-    if (reps <= 0) return
+    if (sets <= 0) return
 
-    setReps(reps => reps - 1)
+    setSets(sets => sets - 1)
   }
+
+  const weight = "80kg"
+  const setPlan = "5"
+  const repPlan = "5"
 
   return (
     <section className="flex flex-col items-center">
@@ -41,16 +45,16 @@ const Section = ({ name }: SectionProps) => {
           </button>
           <div className="w-full text-center">
             <div className="text-xl">{name}</div>
-            <div className="text-xl">80kg 5x5</div>
+            <div className="text-xl">{weight} {setPlan}x{repPlan}</div>
           </div>
           <div className="w-full"></div>
         </div>
 
         <button className="w-full" onClick={incrementReps}>
           <div className="h-20 w-full pt-2 flex justify-center">
-            <img src={repsDecorator(reps)} class="logo" alt="Vite logo" />
-            {reps > 5 && <img src={repsDecorator(reps - 5)} class="logo" alt="Vite logo" />}
-            {reps > 10 && <img src={repsDecorator(reps - 10)} class="logo" alt="Vite logo" />}
+            <img src={setsDecorator(sets)} class="logo" alt="Vite logo" />
+            {sets > 5 && <img src={setsDecorator(sets - 5)} class="logo" alt="Vite logo" />}
+            {sets > 10 && <img src={setsDecorator(sets - 10)} class="logo" alt="Vite logo" />}
           </div>
         </button>
       </div>
