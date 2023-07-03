@@ -15,9 +15,9 @@ const setsDecorator = (reps: number) => {
 
 interface SectionProps {
   name: string
-  weight: string
-  setPlan: string
-  repPlan: string
+  weight: number
+  setPlan: number
+  repPlan: number
 }
 
 export const Lift = ({ name, weight, setPlan, repPlan }: SectionProps) => {

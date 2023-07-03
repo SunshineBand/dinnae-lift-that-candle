@@ -1,31 +1,37 @@
 import { Lift } from './Lift'
 
-export function App() {
+type Lift = {
+  name: string
+  weightKg: number
+  setPlan: number
+  repPlan: number
+}
 
-  const liftData = [
+export function App() {
+  const liftData: Lift[] = [
     {
       name: 'Bench',
-      weightKg: '80',
-      setPlan: '3',
-      repPlan: '8'
+      weightKg: 80,
+      setPlan: 3,
+      repPlan: 8
     },
     {
       name: 'Row',
-      weightKg: '80',
-      setPlan: '3',
-      repPlan: '8'
+      weightKg: 80,
+      setPlan: 3,
+      repPlan: 8
     },
     {
       name: 'Squat',
-      weightKg: '120',
-      setPlan: '3',
-      repPlan: '8'
+      weightKg: 120,
+      setPlan: 3,
+      repPlan: 8
     },
     {
       name: 'Overhead triceps',
-      weightKg: '10',
-      setPlan: '3',
-      repPlan: '12'
+      weightKg: 10,
+      setPlan: 3,
+      repPlan: 12
     },
   ]
 
