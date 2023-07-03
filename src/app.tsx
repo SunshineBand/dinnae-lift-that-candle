@@ -19,7 +19,7 @@ const liftData: TLift[] = [
   {
     name: 'Row',
     weightKg: 80,
-    setPlan: 3,
+    setPlan: 8,
     repPlan: 8
   },
   {

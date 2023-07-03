@@ -41,22 +41,22 @@ const LiftForm = ({ name, weightKg, setPlan, repPlan, index, onStopEdit, updateL
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="h-36">
+    <form onSubmit={handleSubmit(onSubmit)} className="h-40">
       <p>I am being edited</p>
       <input
         key={name + index}
         {...register(`name`)}
       />
       <input
-        key={weightKg + index}
+        key={'weightKg' + weightKg + index}
         {...register(`weightKg`)}
       />
       <input
-        key={setPlan + index}
+        key={'setPlan' + setPlan + index}
         {...register(`setPlan`)}
       />
       <input
-        key={repPlan + index}
+        key={'repPlan' + repPlan + index}
         {...register(`repPlan`)}
       />
       <button type="button" onClick={handleSubmit(onSubmit)}>
@@ -92,7 +92,7 @@ export const Lift = ({ name, weight, setPlan, repPlan, index, updateLift }: Sect
   }
 
   const incrementReps = () => {
-    if (sets >= 15) return
+    if (sets >= setPlan) return
 
     setSets((sets) => sets + 1)
   }
@@ -104,7 +104,7 @@ export const Lift = ({ name, weight, setPlan, repPlan, index, updateLift }: Sect
   }
 
   return (
-    <section className="h-36 flex flex-col items-center">
+    <section className="min-h-40 flex flex-col items-center">
       <div className="w-full">
         <div className="flex justify-around">
           <button type="button" onClick={decrementReps} className="w-full flex justify-center items-center">
@@ -118,7 +118,7 @@ export const Lift = ({ name, weight, setPlan, repPlan, index, updateLift }: Sect
         </div>
 
         <button className="w-full" onClick={incrementReps}>
-          <div className="h-20 w-full pt-2 flex justify-center">
+          <div className="h-20 w-full mt-3 flex justify-center">
             <img src={setsDecorator(sets)} class="logo" alt="Vite logo" />
             {sets > 5 && <img src={setsDecorator(sets - 5)} class="logo" alt="Vite logo" />}
             {sets > 10 && <img src={setsDecorator(sets - 10)} class="logo" alt="Vite logo" />}
