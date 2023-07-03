@@ -18,13 +18,21 @@ const setsDecorator = (reps: number) => {
 interface LiftFormProps {
   name: string
   index: number
+  setPlan: number
+  repPlan: number
+  weightKg: number
   onStopEdit: () => void
   updateLift: UseFieldArrayUpdate<{ lifts: TLift[] }>
 }
 
-const LiftForm = ({ name, index, onStopEdit, updateLift }: LiftFormProps) => {
+const LiftForm = ({ name, weightKg, setPlan, repPlan, index, onStopEdit, updateLift }: LiftFormProps) => {
   const { register, handleSubmit } = useForm({
-    defaultValues: { name }
+    defaultValues: {
+      name: name,
+      weightKg: weightKg,
+      setPlan: setPlan,
+      repPlan: repPlan
+    }
   })
 
   const onSubmit = (data: any) => {
@@ -38,6 +46,18 @@ const LiftForm = ({ name, index, onStopEdit, updateLift }: LiftFormProps) => {
       <input
         key={name + index}
         {...register(`name`)}
+      />
+      <input
+        key={weightKg + index}
+        {...register(`weightKg`)}
+      />
+      <input
+        key={setPlan + index}
+        {...register(`setPlan`)}
+      />
+      <input
+        key={repPlan + index}
+        {...register(`repPlan`)}
       />
       <button type="button" onClick={handleSubmit(onSubmit)}>
         submit
@@ -60,7 +80,15 @@ export const Lift = ({ name, weight, setPlan, repPlan, index, updateLift }: Sect
   const [editing, setEditing] = useState(false)
 
   if (editing) {
-    return <LiftForm name={name} index={index} updateLift={updateLift} onStopEdit={() => setEditing(false)}/>
+    return <LiftForm
+      name={name}
+      weightKg={weight}
+      setPlan={setPlan}
+      repPlan={repPlan}
+      index={index}
+      updateLift={updateLift}
+      onStopEdit={() => setEditing(false)}
+    />
   }
 
   const incrementReps = () => {
