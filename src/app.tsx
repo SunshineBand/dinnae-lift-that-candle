@@ -1,5 +1,6 @@
 import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form'
 import { Lift } from './Lift'
+import { LuPlus } from 'react-icons/lu'
 
 type Lift = {
   name: string
@@ -45,7 +46,7 @@ export function App() {
     }
   })
 
-  const { fields } = useFieldArray({
+  const { fields, append } = useFieldArray({
     control,
     name: 'lifts'
   })
@@ -67,6 +68,14 @@ export function App() {
           />
         </div>
       ))}
+      <button
+        type="button"
+        onClick={() => append({ name: 'Bench', weightKg: 80, setPlan: 11, repPlan: 4 })}
+        className="bg-orange-300 text-white text-xl italic h-20 w-full flex justify-center items-center"
+      >
+        add a lift
+        <LuPlus className="ml-2" />
+      </button>
     </form>
   )
 }

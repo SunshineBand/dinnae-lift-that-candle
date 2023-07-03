@@ -44,7 +44,7 @@ export const Lift = ({ name, weight, setPlan, repPlan }: SectionProps) => {
           </button>
           <div className="w-full text-center">
             <div className="text-xl">{name}</div>
-            <div className="text-xl">{weight} {setPlan}x{repPlan}</div>
+            <div className="text-xl">{weight}kg {setPlan}x{repPlan}</div>
           </div>
           <div className="w-full"></div>
         </div>
