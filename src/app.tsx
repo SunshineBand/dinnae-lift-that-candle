@@ -2,14 +2,14 @@ import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form'
 import { Lift } from './Lift'
 import { LuPlus } from 'react-icons/lu'
 
-type Lift = {
+export type TLift = {
   name: string
   weightKg: number
   setPlan: number
   repPlan: number
 }
 
-const liftData: Lift[] = [
+const liftData: TLift[] = [
   {
     name: 'Bench',
     weightKg: 80,
@@ -46,12 +46,12 @@ export function App() {
     }
   })
 
-  const { fields, append } = useFieldArray({
+  const { fields, append, update } = useFieldArray({
     control,
     name: 'lifts'
   })
 
-  const onSubmit: SubmitHandler<{ lifts: Lift[]; }> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<{ lifts: TLift[]; }> = (data) => console.log(data)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,6 +65,8 @@ export function App() {
             weight={lift.weightKg}
             setPlan={lift.setPlan}
             repPlan={lift.repPlan}
+            index={index}
+            updateLift={update}
           />
         </div>
       ))}
