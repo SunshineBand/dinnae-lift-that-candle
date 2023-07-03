@@ -15,9 +15,12 @@ const setsDecorator = (reps: number) => {
 
 interface SectionProps {
   name: string
+  weight: string
+  setPlan: string
+  repPlan: string
 }
 
-export const Lift = ({ name }: SectionProps) => {
+export const Lift = ({ name, weight, setPlan, repPlan }: SectionProps) => {
   const [sets, setSets] = useState(0)
 
   const incrementReps = () => {
@@ -31,10 +34,6 @@ export const Lift = ({ name }: SectionProps) => {
 
     setSets(sets => sets - 1)
   }
-
-  const weight = "80kg"
-  const setPlan = "5"
-  const repPlan = "5"
 
   return (
     <section className="flex flex-col items-center">
