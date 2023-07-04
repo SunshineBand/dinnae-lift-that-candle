@@ -1,6 +1,6 @@
 import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form'
 import { Lift } from './Lift'
-import { LuPlus } from 'react-icons/lu'
+import { LuBookOpenCheck, LuPlus } from 'react-icons/lu'
 
 export type TLift = {
   name: string
@@ -86,7 +86,7 @@ export function App() {
         className="bg-orange-400 text-white text-xl h-20 w-full flex justify-center items-center"
       >
         complete workout
-        <LuPlus className="ml-2" />
+        <LuBookOpenCheck className="ml-2" />
       </button>
     </form>
   )
