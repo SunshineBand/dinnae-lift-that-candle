@@ -51,7 +51,10 @@ export function App() {
     name: 'lifts'
   })
 
-  const onSubmit: SubmitHandler<{ lifts: TLift[]; }> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<{ lifts: TLift[]; }> = (data) => {
+    console.log(data)
+    console.log('hey')
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -76,6 +79,13 @@ export function App() {
         className="bg-orange-300 text-white text-xl italic h-20 w-full flex justify-center items-center"
       >
         add a lift
+        <LuPlus className="ml-2" />
+      </button>
+      <button
+        type="submit"
+        className="bg-orange-400 text-white text-xl h-20 w-full flex justify-center items-center"
+      >
+        complete workout
         <LuPlus className="ml-2" />
       </button>
     </form>

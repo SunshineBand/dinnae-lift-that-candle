@@ -117,7 +117,7 @@ export const Lift = ({ name, weight, setPlan, repPlan, index, updateLift }: Sect
           <div className="w-full"></div>
         </div>
 
-        <button className="w-full" onClick={incrementReps}>
+        <button type="button" className="w-full" onClick={incrementReps}>
           <div className="h-20 w-full mt-3 flex justify-center">
             <img src={setsDecorator(sets)} class="logo" alt="Vite logo" />
             {sets > 5 && <img src={setsDecorator(sets - 5)} class="logo" alt="Vite logo" />}
